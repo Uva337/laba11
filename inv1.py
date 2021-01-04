@@ -1,43 +1,24 @@
-#!/usr/bin/env 2.
+# !/usr/bin/evn python3
 # -*- config: utf-8 -*-
 
-# Напишите рекурсивную функцию, проверяющую правильность расстановки скобок в строке.
-# При правильной расстановке выполняются условия:
-# количество открывающих и закрывающих скобок равно.
-# внутри любой пары открывающая – соответствующая закрывающая скобка, скобки
-# расставлены правильно
+
+# Дан список X из n вещественных чисел. Найти минимальный элемент списка, используя
+# вспомогательную рекурсивную функцию, находящую минимум среди последних элементов
+# списка , начиная с n-гo.
 
 
-def par_checker(symbol_string):
-    global symbol, symbol
-    s = []
-    balanced = True
-    index = 0
-
-    while index < len(symbol_string) and balanced:
-        symbol = symbol_string[index]
-        if symbol in "(":
-            s.append(symbol)
-    else:
-        if len(s) == 0:
-            balanced = False
-        else:
-            top = s.pop()
-            assert isinstance(symbol, object)
-            if not matches(top, symbol):
-                balanced = False
-        index += 1
-
-    return balanced and len(s) == 0
-
-
-def matches(open, close):
-    opens = "("
-    closers = ")"
-    return opens.index(open) == closers.index(close)
+def minimum(a, start):
+    min = start
+    if a > len(lst):
+        print(f"Минимальный элемент: {min}")
+        return min
+    elif lst[a - 1] < min:
+        min = lst[a-1]
+    minimum(a + 1, min)
 
 
 if __name__ == '__main__':
-
-    print(par_checker('((())())'))
-    print(par_checker(')()'))
+    lst = list(map(float, input("Ввод элементов  ").split(" ")))
+    n1 = int(input("Введите номер с самого начала "))
+    minimum(n1, lst[n1 - 1])
+    
