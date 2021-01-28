@@ -2,23 +2,24 @@
 # -*- config: utf-8 -*-
 
 
-# Дан список X из n вещественных чисел. Найти минимальный элемент списка, используя
-# вспомогательную рекурсивную функцию, находящую минимум среди последних элементов
-# списка , начиная с n-гo.
+# Создайте рекурсивную функцию, печатающую все возможные перестановки для целых
+# чисел от 1 до N .
 
 
-def minimum(a, start):
-    min = start
-    if a > len(lst):
-        print(f"Минимальный элемент: {min}")
-        return min
-    elif lst[a - 1] < min:
-        min = lst[a-1]
-    minimum(a + 1, min)
+def all_perms(arr):
+    if len(arr) == 1:
+        return [arr]  
+    else:
+        a = arr[0]  
+        p = all_perms(arr[1:])  
+        r = []  
+        for pp in p: 
+            for i in range(len(pp)):
+                tmp = pp[0:i] + [a] + pp[i:]
+                r.append(tmp)
+            r.append(pp + [a])
+        return r
 
 
-if __name__ == '__main__':
-    lst = list(map(float, input("Ввод элементов  ").split(" ")))
-    n1 = int(input("Введите номер с самого начала "))
-    minimum(n1, lst[n1 - 1])
-    
+n = int(input("n="))
+print(all_perms([i for i in range(1, n + 1)]))
